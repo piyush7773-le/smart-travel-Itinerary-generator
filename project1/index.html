@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Travel Itinerary Generator</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">TripCraft</span>
+      </div>
+      <div class="top-actions">
+        <button id="themeToggle" class="icon-btn" title="Toggle dark mode">
+          🌙
+        </button>
+        <button class="primary-btn" id="printBtn">Export as PDF</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="hero-title">Smart Travel Itinerary Generator</h1>
+        <p class="hero-subtitle">
+          Plan your entire trip day-by-day with live weather, photos & maps – in one beautiful view.
+        </p>
+      </div>
+      <div class="hero-illustration">
+        <div class="plane-orbit">
+          <div class="plane">🛫</div>
+        </div>
+        <div class="hero-badge">✨ Auto Itinerary • ☁ Live Weather • 🗺 Maps</div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-layout">
+      <!-- Form Card -->
+      <section class="card form-card">
+        <h2>Trip Details</h2>
+        <p class="form-hint">Fill in your trip info and let the app craft your itinerary.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input
+              type="text"
+              id="destination"
+              placeholder="e.g.Kashmir, India"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Start date</label>
+            <input type="date" id="startDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End date</label>
+            <input type="date" id="endDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="tripTheme">Trip mood</label>
+            <select id="tripTheme">
+              <option value="mixed" selected>Mixed Adventure</option>
+              <option value="relax">Relax & Chill</option>
+              <option value="adventure">Adventure & Trek</option>
+              <option value="food">Food & Cafes</option>
+              <option value="culture">Culture & Heritage</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="travelers">No. of travelers</label>
+            <input type="number" id="travelers" min="1" value="1" />
+          </div>
+        </div>
+
+        <button id="generateBtn" class="primary-btn full-width">
+          Generate Itinerary
+        </button>
+
+        <p id="errorMsg" class="error-msg"></p>
+      </section>
+
+      <!-- Itinerary & Map Column -->
+      <section class="itinerary-column">
+        <!-- Live Summary -->
+        <section class="card trip-summary" id="tripSummary">
+          <h2>Trip Overview</h2>
+          <p class="summary-placeholder">
+            Your trip summary will appear here after generating the itinerary.
+          </p>
+        </section>
+
+        <!-- Itinerary List -->
+        <section class="card itinerary-card">
+          <div class="card-header">
+            <h2>Day-wise Itinerary</h2>
+          </div>
+          <div id="itinerary" class="itinerary"></div>
+        </section>
+
+        <!-- Map -->
+        <section class="card map-card">
+          <div class="card-header">
+            <h2>Destination Map</h2>
+          </div>
+          <div class="map-wrapper">
+            <iframe
+              id="mapFrame"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src=""
+            ></iframe>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Made with ❤️ for travelers using HTML, CSS & JavaScript.</span>
+    </footer>
+  </div>
+</body>
+</html>
